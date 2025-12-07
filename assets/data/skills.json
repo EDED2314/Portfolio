@@ -59,8 +59,8 @@
       "Embedded Hardware"
     ],
     "Coilgun": [
-      "Microelectronics",
       "Physics E&M",
+      "Electronics",
       "Creo Onshape CAD",
       "Python"
     ],
@@ -83,9 +83,7 @@
       "Threading",
       "Spotify Integration",
       "Voice Detection",
-      "Queue Management",
       "JSON Handling",
-      "Memory Management",
       "Rapid Prototyping"
     ],
     "Calls4Mental": [
