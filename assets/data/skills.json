@@ -42,6 +42,7 @@
     "CAM-MK3": [
       "KiCAD",
       "Video Decoder",
+      "RF",
       "ESP32-P4",
       "Embedded Hardware"
     ],
@@ -67,23 +68,70 @@
       "Python",
       "C/C++",
       "Embedded Software",
-      "Data Analysis"
+      "Data Analysis and Visualization"
     ],
     "FireJams": [
-      "PyAudio",
+      "Python",
       "Tkinter",
+      "Socket.IO",
+      "Eventlet",
+      "PyAudio",
+      "Pydub",
+      "Audio Streaming",
+      "Real-Time Sync",
+      "Client-Server Model",
       "Threading",
-      "Sockets",
-      "Python"
+      "Spotify Integration",
+      "Voice Detection",
+      "Queue Management",
+      "JSON Handling",
+      "Memory Management",
+      "Rapid Prototyping"
     ],
     "Calls4Mental": [
+      "Python",
+      "Tkinter",
+      "Computer Vision",
       "PyAudio",
       "Threading",
+      "APIs",
+      "Speech-to-Text",
+      "Text-to-Speech",
+      "Sentiment Analysis",
+      "Image Analysis",
+      "Object Detection",
+      "Rapid Prototyping"
+    ],
+    "SupplyIt!": [
+      "Python",
+      "Flutter/Dart",
+      "Flask",
+      "Firebase",
+      "Realtime Database",
+      "FCM (Push) Notifications",
+      "Local Notifications",
+      "YOLOv8",
       "Computer Vision",
-      "OpenAI Speech-to-text API",
-      "Whisper",
-      "LLM",
-      "Python"
+      "Machine Learning",
+      "APIs",
+      "GPS Integration",
+      "Camera Integration",
+      "Full-Stack Development",
+      "Rapid Prototyping"
+    ],
+    "Medicab": [
+      "Python",
+      "Flutter/Dart",
+      "Computer Vision",
+      "Flask",
+      "TensorFlow",
+      "Computer Vision",
+      "Machine Learning",
+      "APIs",
+      "JSON Handling",
+      "Camera Integration",
+      "Full-Stack Development",
+      "Rapid Prototyping"
     ]
   },
   "experiences": {
