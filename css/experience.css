@@ -110,3 +110,11 @@
         width: 100%;
     }
 }
+
+#other-experiences-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+}
