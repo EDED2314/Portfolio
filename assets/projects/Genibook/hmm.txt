@@ -1,0 +1,6 @@
+        \resumeProjectHeading
+          {\textbf{Genibook} $|$ \textit{Personal Project} $|$ Go, Colly, Gin, Python, Flutter, Heroku}{July 2022 -- June 2025}
+          \resumeItemListStart
+             \resumeItem{Developed a full-stack gradebook viewer that web-scraped data from school's Genesis grade-book and displayed it via a Flutter app; zero backend data retention; launched on Play Store and App Store, gaining 100+ installs.}
+            \resumeItem{Improved backend API scraping efficiency from $\sim$30s (Selenium + Flask) → $\sim$20s (BeautifulSoup + Flask) → $\sim$11s (Go Colly + Gin), reducing load time by $>$50\%.}
+          \resumeItemListEnd

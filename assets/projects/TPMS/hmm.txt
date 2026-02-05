@@ -1,0 +1,8 @@
+  % \resumeProjectHeading
+        %   {\textbf{HIL Test Stand} $|$ \textit{Illini Solar Car} }{October 2025 -- Present}
+        %   \resumeItemListStart
+        %     \resumeItem{Engineering PCBs for hardware-in-the-loop test stands using CANalyzer, KiCAD, and MCUxpresso.} 
+        %     \resumeItem{Simulating various voltages, currents, temperatures, and fault conditions to see how vehicle electrical system responds, ensuring system redundancy and discovering edge cases.}
+        %       \resumeItem{Analyzing and evaluating accuracy stuff for sensors Root Allan Deviation}
+        %
+        %   \resumeItemListEnd
