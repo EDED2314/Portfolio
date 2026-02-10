@@ -1,0 +1,9 @@
+% \resumeItem{Designed schematic, layout, and wiring of PCB that will transmit live video from 2 RunCam Split 4s using KiCAD}
+% \resumeItem{Assembled PCB using hot-air reflow and hand soldering on fabricated boards (JLCPCB).}
+% \resumeItem{Verified PCB soldering and circuit integrity using power supplies, oscilloscopes, test points, and a multimeter.}
+% \resumeItem{Implemented LDO and buck-boost regulators, power mux, transceiver, 
+TVP5151 video decoder, ESP32-P4 MCU, 433 MHz Transciever, I2C/SPI buses, and high-side switch using manufacturer datasheets and website.}
+% \resumeItem{}
+% \resumeItem{Spearheading drivers and firmware for analog video digitization 
+(TVP5151, NTSC $\rightarrow$ YCbCr 4:2:2 output), H.264 encoding/decoding (ESP32-P4), 
+and parallel digital video interface using C++ and PlatformIDE.}
