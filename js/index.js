@@ -6,11 +6,11 @@
 
     if (headerImage) {
         headerImage.addEventListener('mouseenter', () => {
-            headerImage.src = './assets/images/smile.png';
+            headerImage.src = './assets/images/goob-modified.png';
         });
 
         headerImage.addEventListener('mouseleave', () => {
-            headerImage.src = './assets/images/serious.png';
+            headerImage.src = './assets/images/newprofilepic-modified.png';
         });
     }
 })();
