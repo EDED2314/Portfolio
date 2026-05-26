@@ -41,16 +41,26 @@
     ],
     "CAM-MK3": [
       "KiCAD",
-      "Video Decoder",
       "RF",
+      "C++",
       "ESP32-P4",
-      "Embedded Hardware"
+      "Embedded Hardware",
+      "Hardware Bring Up"
+    ],
+    "EAGLE": [
+      "KiCAD",
+      "RF",
+      "C++",
+      "Python",
+      "Embedded Hardware",
+      "Hardware Bring Up"
     ],
     "GATOR": [
       "KiCAD",
-      "HV Systems",
+      "24V Systems",
       "GPS + RF",
-      "Embedded Hardware"
+      "Embedded Hardware",
+      "Hardware Bring Up"
     ],
     "Monty-TARC-R3": [
       "EasyEDA",
