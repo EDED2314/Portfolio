@@ -51,12 +51,19 @@ a.button#home-button {
 /* Footer Styling */
 
 #footer {
-  width: 100%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   display: flex;
-  padding: 30px 50px;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 16px;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
 }
 
 /* Link Styling */
@@ -73,7 +80,15 @@ a.no-underline:hover {
 /* Small devices (portrait tablets and large phones, 800px and below) */
 @media only screen and (max-width: 800px) {
   #footer {
-    padding: 20px 20px;
+    bottom: 15px;
+    right: 15px;
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .footer-icon {
+    width: 18px;
+    height: 18px;
   }
 }
 
