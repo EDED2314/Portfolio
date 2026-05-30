@@ -40,7 +40,7 @@
 
 (function () {
   const hero = document.getElementById('hero');
-  const page = hero ? hero.nextElementSibling : null;
+  const page = hero ? document.querySelector('.page-content') : null;
 
   // Navbar may be injected asynchronously. Use helpers that query it on-demand.
   function getNavbar() {
@@ -92,7 +92,7 @@
       return;
     }
 
-    page.style.display = 'block';
+    page.style.display = 'flex';
     page.classList.add('revealed');
 
     // allow the browser to render the revealed content then scroll
