@@ -1,52 +1,275 @@
-/* Project Section */
+/* ============================================================
+   Projects Page — Flippable Trading Cards on Blueprint Grid
+   ============================================================ */
 
+/* ---------- Blueprint grid background ---------- */
 #my-work-section {
     display: flex;
     flex-direction: column;
     gap: 16px;
     margin-top: 10px;
+    position: relative;
+    
+    /* Subtle engineer graph paper grid texture */
+    background-image: 
+        linear-gradient(to right, rgba(26, 26, 26, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(26, 26, 26, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: center top;
+    padding: 32px;
+    border: 2px solid rgba(26, 26, 26, 0.08);
+    border-radius: 20px;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.015);
+    background-color: var(--COLOR-7);
 }
 
 .what-is-above-the-projects {
     margin-top: 5px;
 }
 
-.project-title {
-    font-size: 30px;
-    font-weight: 700;
-}
-
+/* ---------- Projects container (card grid) ---------- */
 .projects-container {
-    display: flex;
-    gap: 34px 16px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px 24px;
 }
 
-/* Project Cards */
-
+/* ---------- 3D Flip Card ---------- */
 .project-card {
-    max-width: calc((100% - 32px) / 3);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 15px;
+    perspective: 900px;
+    cursor: pointer;
+    /* uniform card height */
+    height: 360px;
 }
 
-.project-card-text-container {
-    flex-direction: column;
-    display: flex;
-    gap: 16px
-}
-
-.project-image {
+.project-card-inner {
+    position: relative;
+    width: 100%;
     height: 100%;
-    max-height: 180px;
-    width: auto;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.project-card.flipped .project-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Shared face styles */
+.project-card-front,
+.project-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 14px;
+    border: 2.5px solid #1a1a1a;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- FRONT FACE ---------- */
+.project-card-front {
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+.project-image-container {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f0e8;
+}
+
+.project-image-container img.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    margin: 10 auto;
+    transition: transform 0.35s ease;
+}
+
+/* Logo-type images: don't crop, show contained with padding */
+.project-image-container.contain-image {
+    padding: 20px;
+}
+
+.project-image-container.contain-image img.project-image {
     object-fit: contain;
 }
 
-a.button.read-more {
+/* Hover zoom on image */
+.project-card:hover .project-image-container img.project-image {
+    transform: scale(1.04);
+}
+
+.project-card-front-title {
+    padding: 12px 16px;
+    font-size: 22px;
+    font-weight: 700;
+    /* font-family: 'Times New Roman', Times, serif; */
+    text-align: center;
+    background: #fff;
+    border-top: 2px solid #e8e3da;
+    letter-spacing: 0.02em;
+}
+
+/* Flip hint */
+.flip-hint {
+    position: absolute;
+    bottom: 54px;
+    right: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.45);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    padding: 4px 10px;
+    border-radius: 20px;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+}
+
+.project-card:hover .flip-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Don't show hint once flipped */
+.project-card.flipped .flip-hint {
+    opacity: 0 !important;
+}
+
+/* ---------- BACK FACE ---------- */
+.project-card-back {
+    transform: rotateY(180deg);
+    padding: 22px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+/* Color theming per card — set via data-color attribute */
+.project-card[data-color="1"] .project-card-back {
     background-color: var(--COLOR-1);
+}
+
+.project-card[data-color="2"] .project-card-back {
+    background-color: var(--COLOR-2);
+}
+
+.project-card[data-color="3"] .project-card-back {
+    background-color: var(--COLOR-3);
+}
+
+.project-card[data-color="4"] .project-card-back {
+    background-color: var(--COLOR-4);
+}
+
+.project-card[data-color="5"] .project-card-back {
+    background-color: var(--COLOR-5);
+}
+
+.project-card[data-color="6"] .project-card-back {
+    background-color: var(--COLOR-6);
+}
+
+.project-card-back .project-title {
+    font-size: 24px;
+    font-weight: 700;
+    /* font-family: 'Times New Roman', Times, serif; */
+    margin: 0;
+    /* Reset the line-clamp from typography.css for the back */
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+}
+
+.project-card-back .body-text.project-card-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.55;
+    flex: 1;
+    overflow-y: auto;
+    /* Override any inherited clamp */
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    text-overflow: unset;
+}
+
+/* Skills on back (top-3 pills) */
+.project-card-back .project-card-skills {
+    margin: 0;
+}
+
+/* Read-more button styling on card back */
+.project-card-back a.button.read-more {
+    background-color: #fff;
+    border: 2px solid #1a1a1a;
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    /* Prevent the card from flipping when clicking this button */
+    position: relative;
+    z-index: 2;
+}
+
+.project-card-back a.button.read-more:hover {
+    background-color: #1a1a1a;
+    color: #fff;
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.project-card-back a.button.read-more .right-arrow-icon {
+    width: 14px;
+    height: 14px;
+    transition: filter 0.2s ease;
+}
+
+.project-card-back a.button.read-more:hover .right-arrow-icon {
+    filter: invert(1);
+}
+
+/* ---------- Section label ("Other Projects") ---------- */
+.section-label-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+
+@media only screen and (max-width: 1100px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+        height: 340px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .project-card {
+        height: 360px;
+    }
 }

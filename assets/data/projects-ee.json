@@ -1,0 +1,157 @@
+{
+  "sections": [
+    {
+      "title": "Projects",
+      "projects": [
+        {
+          "key": "CAM-MK3",
+          "title": "CAM",
+          "image": "./assets/projects/CAM-MK3/cam-together.png",
+          "containImage": false,
+          "color": 1,
+          "description": "A PCB that controls two Runcam Split 4s, uses B2B I2C, implements a video decoder, runs hardware video compression, and transfers live video at 1Mb/s using FSK.",
+          "link": {
+            "href": "./project-pages-ee/project-template-images.html",
+            "text": "Read More",
+            "external": false
+          }
+        },
+        {
+          "key": "EAGLE",
+          "title": "EAGLE",
+          "image": "./assets/projects/EAGLE/eagle-together.png",
+          "containImage": false,
+          "color": 2,
+          "description": "Receiver board that runs video decompression and processing on received video fragments from CAM FSK payloads. Designed with essentially the same hardware as CAM.",
+          "link": {
+            "href": "./project-pages-ee/project-template-images.html",
+            "text": "Read More",
+            "external": false
+          }
+        },
+        {
+          "key": "GATOR",
+          "title": "GATOR",
+          "image": "./assets/projects/GATOR/gator-together.png",
+          "containImage": false,
+          "color": 3,
+          "description": "A high voltage power distribution and ground station PCB. It's equipt with a GPS, a LoRa transciever, two stepper motor drivers, and components that come with them.",
+          "link": {
+            "href": "./project-pages-ee/project-template-narrative.html",
+            "text": "Read More",
+            "external": false
+          }
+        },
+        {
+          "key": "EMBER",
+          "title": "Project EMBER",
+          "image": "./assets/projects/EMBER/IMG_5734.JPG",
+          "containImage": false,
+          "color": 4,
+          "description": "As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCB, and FSM + BLE packet design.",
+          "link": {
+            "href": "./project-pages-ee/project-template-narrative.html",
+            "text": "Read More",
+            "external": false
+          }
+        },
+        {
+          "key": "Coilgun",
+          "title": "Coil Gun",
+          "image": "./assets/projects/Coilgun/cover.png",
+          "containImage": false,
+          "color": 5,
+          "description": "I designed, built, and explained with theory a mini coil gun for my AP Physics C final project. (Ignore the project report title as it was added for humorous effect)",
+          "link": {
+            "href": "./assets/projects/Coilgun/Report.pdf",
+            "text": "Read My Project Report",
+            "external": true
+          }
+        }
+      ]
+    },
+    {
+      "title": "Other (Smaller) Projects",
+      "projects": [
+        {
+          "key": "Genibook",
+          "title": "Genibook",
+          "image": "./assets/projects/Genibook/logo.png",
+          "containImage": true,
+          "color": 6,
+          "description": "An unofficial gradebook app built for my high-school district's gradebook system - Genesis. Underneath this one project is an entire line of smaller projects, evolving from a simple script, that eventually turned into Genibook.",
+          "link": {
+            "href": "./project-pages-ee/project-template-narrative.html",
+            "text": "Read More",
+            "external": false
+          }
+        },
+        {
+          "key": "Spaceshot-GNC",
+          "title": "GNC Scripts",
+          "image": "./assets/projects/GNC/preview.png",
+          "containImage": false,
+          "color": 1,
+          "description": "An on-going project. I implemented sensor fusion algorithms for ISS's Spaceshot Rocket's Guidance Navigation and Controls team in C++; I also created post-flight data visualization and processing tools in Python for our SILSIM.",
+          "link": {
+            "href": "./project-pages-ee/project-template-narrative.html",
+            "text": "Read More",
+            "external": false
+          }
+        },
+        {
+          "key": "FireJams",
+          "title": "FireJams",
+          "image": "./assets/projects/FireJams/preview.png",
+          "containImage": true,
+          "color": 3,
+          "description": "A top-ten hackathon project programmed in Python to recreate Spotify - but with a cozier, friendlier, and most importantly, funnier twist.",
+          "link": {
+            "href": "https://devpost.com/software/firejams",
+            "text": "Check it out on Devpost!",
+            "external": true
+          }
+        },
+        {
+          "key": "Calls4Mental",
+          "title": "Calls4Mental",
+          "image": "./assets/projects/Calls4Mental/logo.jpg",
+          "containImage": true,
+          "color": 2,
+          "description": "A winning hackathon project programmed in Python that is a customizable, AI-powered calling companion that brings approachable virtual therapy to life.",
+          "link": {
+            "href": "https://devpost.com/software/calls4mental",
+            "text": "Check it out on Devpost!",
+            "external": true
+          }
+        },
+        {
+          "key": "SupplyIt!",
+          "title": "SupplyIt!",
+          "image": "./assets/projects/SupplyIt!/cover.jpg",
+          "containImage": false,
+          "color": 4,
+          "description": "A winning, full-stack hackathon project programmed by myself in Python and Dart to create an app that attempts to solve lost storage supplies.",
+          "link": {
+            "href": "https://devpost.com/software/supplyit",
+            "text": "Check it out on Devpost!",
+            "external": true
+          }
+        },
+        {
+          "key": "Medicab",
+          "title": "Medicab",
+          "image": "./assets/projects/MediCab/cover.JPG",
+          "containImage": false,
+          "color": 5,
+          "description": "A winninng, full-stack hackathon project programmed in Python and Dart. Essentially an app with a chatbot and camera support that serves as a database for all your medicines.",
+          "link": {
+            "href": "https://devpost.com/software/medicab",
+            "text": "Check it out on Devpost!",
+            "external": true
+          }
+        }
+      ]
+    }
+  ]
+}

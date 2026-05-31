@@ -131,35 +131,194 @@
 
 
 
-// ------------------------
-// Skills data loader
-// ------------------------
+// ------------------------------------
+// Project & Skills Dynamic Loader
+// ------------------------------------
 (function () {
+  
+  // Helper to render skill pills
+  function renderSkillPills(container, skills) {
+    container.innerHTML = '';
+    (skills || []).forEach(s => {
+      const pill = document.createElement('div');
+      pill.className = 'skill-pill';
+      pill.textContent = s;
+      container.appendChild(pill);
+    });
+  }
+
+  // Load and render projects dynamically for EE projects page
+  async function loadProjectsEE() {
+    const myWorkSection = document.getElementById('my-work-section');
+    if (!myWorkSection) return;
+
+    const currentPath = window.location.pathname;
+    const isEEPage = currentPath.includes('ee-projects') || currentPath.includes('EE-projects');
+    if (!isEEPage) return;
+
+    try {
+      let response;
+      try {
+        response = await fetch('./assets/data/projects-ee.json');
+      } catch (e) {
+        // Fallback if needed
+        response = await fetch('../assets/data/projects-ee.json');
+      }
+      const data = await response.json();
+
+      myWorkSection.innerHTML = ''; // clear initial content
+
+      data.sections.forEach(section => {
+        // Create section header
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'what-is-above-the-projects';
+
+        if (section.title === 'Projects') {
+          headerDiv.innerHTML = `
+            <span class="main-title-big">${section.title}</span>
+            <hr class="section-divider" />
+          `;
+        } else {
+          headerDiv.innerHTML = `
+            <hr class="section-divider" />
+            <span class="main-title-big">${section.title}</span>
+            <hr class="section-divider" />
+          `;
+        }
+        myWorkSection.appendChild(headerDiv);
+
+        // Create projects container grid
+        const containerDiv = document.createElement('div');
+        containerDiv.className = 'projects-container';
+
+        section.projects.forEach(project => {
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          card.setAttribute('data-project', project.key);
+          card.setAttribute('data-color', project.color || '1');
+
+          const inner = document.createElement('div');
+          inner.className = 'project-card-inner';
+
+          // FRONT
+          const front = document.createElement('div');
+          front.className = 'project-card-front';
+
+          const imgContainer = document.createElement('div');
+          imgContainer.className = `project-image-container${project.containImage ? ' contain-image' : ''}`;
+
+          const img = document.createElement('img');
+          img.className = 'project-image';
+          img.src = project.image;
+          imgContainer.appendChild(img);
+
+          const frontTitle = document.createElement('div');
+          frontTitle.className = 'project-card-front-title';
+          frontTitle.textContent = project.title;
+
+          const flipHint = document.createElement('span');
+          flipHint.className = 'flip-hint';
+          flipHint.textContent = '↻ Click to flip';
+
+          front.appendChild(imgContainer);
+          front.appendChild(frontTitle);
+          front.appendChild(flipHint);
+
+          // BACK
+          const back = document.createElement('div');
+          back.className = 'project-card-back';
+
+          const title = document.createElement('div');
+          title.className = 'project-title';
+          title.textContent = project.title;
+
+          const desc = document.createElement('div');
+          desc.className = 'body-text project-card-text';
+          desc.textContent = project.description;
+
+          const skills = document.createElement('div');
+          skills.className = 'project-card-skills';
+          skills.setAttribute('data-project', project.key);
+
+          back.appendChild(title);
+          back.appendChild(desc);
+          back.appendChild(skills);
+
+          // Link/button
+          if (project.link) {
+            const btn = document.createElement('a');
+            btn.className = 'button read-more';
+            btn.href = project.link.href;
+            if (project.link.external) {
+              btn.target = '_blank';
+            }
+
+            const btnText = document.createElement('span');
+            btnText.className = 'button-text';
+            btnText.textContent = project.link.text || 'Read More';
+
+            const arrowIcon = document.createElement('img');
+            arrowIcon.src = './assets/icons/arrow-right.svg';
+            arrowIcon.className = 'right-arrow-icon';
+
+            btn.appendChild(btnText);
+            btn.appendChild(arrowIcon);
+            back.appendChild(btn);
+          }
+
+          inner.appendChild(front);
+          inner.appendChild(back);
+          card.appendChild(inner);
+
+          // Card flip interaction
+          card.addEventListener('click', (e) => {
+            if (e.target.closest('a.button.read-more')) return;
+            card.classList.toggle('flipped');
+          });
+
+          containerDiv.appendChild(card);
+        });
+
+        myWorkSection.appendChild(containerDiv);
+      });
+
+      // Click outside any flipped card → un-flip all
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.project-card')) {
+          const cards = document.querySelectorAll('.project-card');
+          cards.forEach(c => c.classList.remove('flipped'));
+        }
+      });
+
+    } catch (err) {
+      console.error('Failed to load projects JSON:', err);
+    }
+  }
+
+  // Load and render skills on all pages (experience, projects, index)
   async function loadSkills() {
-    // Determine which skills file to load based on the current page URL
     const currentPath = window.location.pathname;
     const isSWEPage = currentPath.includes('swe') || currentPath.includes('SWE');
     const skillsFileName = isSWEPage ? 'skills-swe.json' : 'skills.json';
 
     let data;
     try {
-      // Prefer fetching the JSON over HTTP(S) from the root assets/data folder
       const res = await fetch(`./assets/data/${skillsFileName}`);
       data = await res.json();
     } catch (e) {
       try {
-        // Fallback for nested pages (like project-pages)
         const res = await fetch(`../assets/data/${skillsFileName}`);
         data = await res.json();
-        console.warn('Initial Error', e);
       } catch (err) {
-        console.error('FATAL ERROR', err);
+        console.error('Failed to load skills JSON:', err);
+        return;
       }
     }
 
     // Render skills UI on index page
     const skillsUi = document.getElementById('skills-ui');
     if (skillsUi && data.categories) {
+      skillsUi.innerHTML = '';
       data.categories.forEach(cat => {
         const col = document.createElement('div');
         col.className = 'skills-category';
@@ -175,7 +334,6 @@
         (cat.items || []).forEach(it => {
           const a = document.createElement('a');
           a.className = 'skills-link';
-          // link: project pages under project-pages-ee or project-pages-swe, experiences anchor to index
           const projectPages = isSWEPage ? 'project-pages-swe' : 'project-pages-ee';
           if (it.type === 'project') {
             a.href = `./${projectPages}/${it.target}.html`;
@@ -196,17 +354,6 @@
       });
     }
 
-    // Helper to render skill pills
-    function renderSkillPills(container, skills) {
-      container.innerHTML = '';
-      (skills || []).forEach(s => {
-        const pill = document.createElement('div');
-        pill.className = 'skill-pill';
-        pill.textContent = s;
-        container.appendChild(pill);
-      });
-    }
-
     // Render project page skills (full list)
     document.querySelectorAll('.project-skills[data-project]').forEach(el => {
       const key = el.getAttribute('data-project');
@@ -221,7 +368,7 @@
       renderSkillPills(el, skills.slice(0, 3));
     });
 
-    // Render experience skills into elements with class .experience-skills and attribute data-experience
+    // Render experience skills
     document.querySelectorAll('.experience-skills[data-experience]').forEach(el => {
       const key = el.getAttribute('data-experience');
       const skills = (data.experiences && data.experiences[key]) ? data.experiences[key] : [];
@@ -229,8 +376,18 @@
     });
   }
 
+  // Initialize: load projects first (if on EE page), then load skills
+  async function init() {
+    await loadProjectsEE();
+    await loadSkills();
+  }
 
-  loadSkills();
+  // Run on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
 })();
 
@@ -249,3 +406,25 @@ document.querySelectorAll("[data-gallery]").forEach(gallery => {
     });
   });
 });
+
+// --- Flippable Project Cards ---
+(function () {
+  const cards = document.querySelectorAll('.project-card');
+  if (!cards.length) return;
+
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't flip if the user clicked a link/button on the back
+      if (e.target.closest('a.button.read-more')) return;
+
+      card.classList.toggle('flipped');
+    });
+  });
+
+  // Click outside any flipped card → un-flip all
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.project-card')) {
+      cards.forEach(c => c.classList.remove('flipped'));
+    }
+  });
+})();
