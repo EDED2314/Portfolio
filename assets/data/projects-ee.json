@@ -9,7 +9,7 @@
           "image": "./assets/projects/CAM-MK3/cam-together.png",
           "containImage": false,
           "color": 1,
-          "description": "A PCB that controls two Runcam Split 4s, commanded via I2C by MIDAS (flight controller), implements a video decoder, runs hardware video compression, and transfers live video at 1Mb/s using GFSK.",
+          "description": "A PCBA that controls two Runcam Split 4s, commanded via I2C by MIDAS (flight controller), implements a video decoder, runs hardware video compression, and transfers live video at 1Mb/s using GFSK.",
           "link": {
             "href": "./project-pages-ee/project-template-images.html",
             "text": "Read More",
@@ -22,7 +22,7 @@
           "image": "./assets/projects/EAGLE/eagle-together.png",
           "containImage": false,
           "color": 2,
-          "description": "Receiver board that runs video decompression and processing on received video fragments from CAM GFSK payloads. Designed with essentially the same hardware as CAM.",
+          "description": "Receiver board that runs video processing and display on received video fragments from CAM GFSK payloads. Designed with essentially the same hardware as CAM.",
           "link": {
             "href": "./project-pages-ee/project-template-images.html",
             "text": "Read More",
@@ -35,7 +35,7 @@
           "image": "./assets/projects/EMBER/IMG_5734.JPG",
           "containImage": false,
           "color": 4,
-          "description": "As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCB, and software FSM + BLE payload packet design.",
+          "description": "As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCBA, and software FSM + BLE payload packet design.",
           "link": {
             "href": "./project-pages-ee/project-template-narrative.html",
             "text": "Read More",
