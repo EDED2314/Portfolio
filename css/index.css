@@ -171,17 +171,21 @@ a.button#goto-swe-projects-page-button:hover {
         opacity: 0;
         transform: translateY(0) scale(0.5);
     }
+
     20% {
         opacity: 1;
         transform: translateY(-10px) scale(1.2);
     }
+
     40% {
         transform: translateY(-15px) scale(1);
     }
+
     80% {
         opacity: 1;
         transform: translateY(-25px) scale(1);
     }
+
     100% {
         opacity: 0;
         transform: translateY(-30px) scale(0.8);
@@ -194,8 +198,9 @@ a.button#goto-swe-projects-page-button:hover {
     bottom: 30px;
     left: 110px;
     padding: 16px 20px;
-    padding-right: 40px; /* space for close button */
-    background-color: var(--COLOR-6, #f0f0f0);
+    padding-right: 40px;
+    /* space for close button */
+    background-color: var(--COLOR-2, #f0f0f0);
     color: var(--TEXT-1, #000000);
     border: 2px solid #141414;
     border-radius: 12px;
