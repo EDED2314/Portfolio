@@ -132,6 +132,10 @@ body {
   #hero {
     margin: 30px 0px;
   }
+
+  #hero .hero-inner {
+    padding-top: 0;
+  }
 }
 
 .page-content.hidden {
