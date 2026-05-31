@@ -3,6 +3,30 @@
 // ------------------------
 (function () {
 
+    // Expand card to fit back face content; reset when unflipped
+    function adjustCardHeight(card, isFlipping) {
+        const inner = card.querySelector('.project-card-inner');
+        const back = card.querySelector('.project-card-back');
+        if (!inner || !back) return;
+
+        if (isFlipping) {
+            // Measure the back's natural scrollHeight
+            const backHeight = back.scrollHeight;
+            const currentHeight = inner.offsetHeight;
+
+            if (backHeight > currentHeight) {
+                inner.style.minHeight = backHeight + 'px';
+            }
+        } else {
+            resetCardHeight(card);
+        }
+    }
+
+    function resetCardHeight(card) {
+        const inner = card.querySelector('.project-card-inner');
+        if (inner) inner.style.minHeight = '';
+    }
+
     async function loadProjectsEE() {
         const myWorkSection = document.getElementById('my-work-section');
         if (!myWorkSection) return;
@@ -109,7 +133,9 @@
 
                 card.addEventListener('click', (e) => {
                     if (e.target.closest('a.button.read-more')) return;
+                    const isFlipping = !card.classList.contains('flipped');
                     card.classList.toggle('flipped');
+                    adjustCardHeight(card, isFlipping);
                 });
 
                 containerDiv.appendChild(card);
@@ -118,10 +144,18 @@
             myWorkSection.appendChild(containerDiv);
         });
 
+        // After all cards are created, render skills if data is available
+        if (window._skillsData) {
+            window._renderAllSkills(window._skillsData);
+        }
+
         // Click outside → un-flip all cards
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.project-card')) {
-                document.querySelectorAll('.project-card').forEach(c => c.classList.remove('flipped'));
+                document.querySelectorAll('.project-card').forEach(c => {
+                    c.classList.remove('flipped');
+                    resetCardHeight(c);
+                });
             }
         });
     }

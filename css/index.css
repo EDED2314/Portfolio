@@ -236,3 +236,36 @@ a.button#goto-swe-projects-page-button:hover {
 .fun-fact-close-btn:hover {
     opacity: 1;
 }
+
+
+/* Mobile layout for portfolio header */
+@media only screen and (max-width: 800px) {
+    #portfolio-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #portfolio-header-image-container {
+        flex-basis: auto;
+        align-items: center;
+    }
+
+    .portfolio-header-image {
+        max-width: 200px;
+    }
+
+    #portfolio-header-text-container {
+        flex-basis: auto;
+        align-items: center;
+    }
+
+    #button-column {
+        width: 100%;
+        align-items: center;
+    }
+
+    #button-column a.button {
+        width: fit-content;
+    }
+}

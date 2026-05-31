@@ -35,6 +35,9 @@
             }
         }
 
+        // Store data globally so projects.js can access it
+        window._skillsData = data;
+
         // Skills category UI (index page)
         const skillsUi = document.getElementById('skills-ui');
         if (skillsUi && data.categories) {
@@ -71,6 +74,10 @@
             });
         }
 
+        renderAllSkills(data);
+    }
+
+    function renderAllSkills(data) {
         // Project page full skill list
         document.querySelectorAll('.project-skills[data-project]').forEach(el => {
             const key = el.getAttribute('data-project');
@@ -94,6 +101,9 @@
             renderSkillPills(el, skills);
         });
     }
+
+    // Expose for projects.js to call after cards are created
+    window._renderAllSkills = renderAllSkills;
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', loadSkills);
