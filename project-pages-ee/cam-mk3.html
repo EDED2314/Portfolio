@@ -49,6 +49,7 @@
                         </div>
                     </div>
                 </div>
+                <hr class="section-divider" />
                 <!-- Introduction Section -->
                 <div class="project-row">
                     <div class="project-row-left">
@@ -67,23 +68,18 @@
                                 their communication. This issue was seen in their 2025 summer launch at FAR, where the
                                 GPS lost lock for a duration of time, and CAM had to be manually turned off via commands
                                 sent from the ground station; only then did the GPS lock come back.</div>
+                            <div class="body-text">To improve on last year's design, we looked at choosing our own
+                                transceivers and implementing our own packet design and protocols. Hence, my design for
+                                this year was to implement a pipeline to convert NTSC (analog video from the Runcams) to
+                                digital video, then compress that digital video data and send it via a digital
+                                transceiver. Or, spelled out with emojis: 📹 Analog Video → 🔄 TVP5151 → 💾 ESP32-P4 →
+                                📦 JPEG → 📡 LR2021 → 🦅 Ground Station
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Design Approach Section -->
-                <div class="project-row">
-                    <div class="project-row-left">
-                        <div class="project-details-content">
-                            <div class="body-text">To improve on last year's design, we looked at choosing our own
-                                transceivers and implementing our own packet design and protocols. Hence, my design for
-                                this year was to implement a pipeline to convert NTSC (analog video from the Runcams) to
-                                digital video, then compress that digital video data and send it via a digital
-                                transceiver.</div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="project-row">
                     <div class="project-row-left">
                         <div id="project-image">
@@ -102,7 +98,7 @@
                     <div class="project-row-left">
                         <div class="project-details-content">
                             <div class="body-text">Feel free to take a look at our schematics for the first revision of
-                                this board here, or by viewing the photos below.</div>
+                                this board by viewing the photos below.</div>
                         </div>
                     </div>
                 </div>
