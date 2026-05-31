@@ -19,7 +19,7 @@
         {
           "key": "EAGLE",
           "title": "EAGLE",
-          "image": "./assets/projects/EAGLE/eagle-together.png",
+          "image": "./assets/projects/EAGLE/eagle-front-back-together-visual.png",
           "containImage": false,
           "color": 2,
           "description": "Part of ISS Spaceshot. Receiver board that runs video processing and display on received video fragments from CAM GFSK payloads. Designed with essentially the same hardware as CAM.",
