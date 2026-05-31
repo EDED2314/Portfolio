@@ -1,3 +1,39 @@
+/* Project Header Row */
+.project-header-row {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.what-is-above-the-projects {
+    flex: 1;
+}
+
+.project-hero-image {
+    flex: 0 0 auto;
+    max-width: 350px;
+}
+
+.project-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 900px) {
+    .project-header-row {
+        flex-direction: column;
+    }
+
+    .project-hero-image {
+        max-width: 40%;
+    }
+}
+
+
 .project-row {
     display: flex;
     gap: 35px;
