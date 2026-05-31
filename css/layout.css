@@ -36,7 +36,7 @@ body {
 /* Hero (full-screen) */
 #hero {
   /* Keep hero visible below a fixed navbar by reducing its minimum height */
-  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100dvh - var(--navbar-height));
   display: flex;
   align-items: center;
   justify-content: center;
