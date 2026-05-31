@@ -18,7 +18,7 @@
 .project-brief-other-info {
     display: flex;
     flex-direction: column;
-    margin-top: 8px;
+    margin-top: -4px;
     font-family: 'Times New Roman', Times, serif;
 }
 
