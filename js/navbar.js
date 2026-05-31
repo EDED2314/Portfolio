@@ -5,7 +5,7 @@
     const pathParts = window.location.pathname.split('/').filter(p => p);
     let depth = pathParts.length - 1;
 
-    if (window.location.pathname.includes('Protfolio')) depth -= 1;
+    if (window.location.pathname.includes('Portfolio')) depth -= 1;
 
     let prefix = '';
     for (let i = 0; i < depth; i++) prefix += '../';
