@@ -116,6 +116,20 @@ a.no-underline:hover {
   opacity: 0.9;
 }
 
+.gallery-main-video {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.gallery-main-video:hover {
+  opacity: 0.9;
+}
+
 .gallery-thumbs {
   display: flex;
   gap: 10px;
@@ -138,6 +152,24 @@ a.no-underline:hover {
 }
 
 .gallery-thumbs img.active-thumb {
+  outline: 3px solid var(--COLOR-1, #007bff);
+}
+
+.gallery-thumbs video {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.gallery-thumbs video:hover {
+  transform: scale(1.08);
+  opacity: 0.8;
+}
+
+.gallery-thumbs video.active-thumb {
   outline: 3px solid var(--COLOR-1, #007bff);
 }
 
@@ -217,6 +249,14 @@ a.no-underline:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
+.lightbox-video {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
 .lightbox-close {
   position: absolute;
   top: -40px;
@@ -249,6 +289,10 @@ a.no-underline:hover {
   }
 
   .lightbox-image {
+    max-height: 85vh;
+  }
+
+  .lightbox-video {
     max-height: 85vh;
   }
 
