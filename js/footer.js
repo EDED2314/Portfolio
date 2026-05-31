@@ -18,15 +18,16 @@
             if (prefix) data = data.replaceAll('./assets/', prefix + 'assets/');
             placeholder.outerHTML = data;
 
+
             const emailBtn = document.querySelector('.footer-email-btn');
             if (!emailBtn) return;
+
 
             emailBtn.addEventListener('click', () => {
                 const email = 'eddiejt2@outlook.com';
                 navigator.clipboard.writeText(email)
                     .then(() => showToast('Email copied!', emailBtn))
                     .catch(() => {
-                        // Fallback for older browsers
                         const ta = document.createElement('textarea');
                         ta.value = email;
                         ta.style.cssText = 'position:fixed;opacity:0';
@@ -37,6 +38,7 @@
                         showToast('Email copied!', emailBtn);
                     });
             });
+
         })
         .catch(err => console.error('Failed to load footer:', err));
 
