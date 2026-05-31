@@ -6,12 +6,12 @@
         {
           "key": "CAM-MK3",
           "title": "CAM",
-          "image": "./assets/projects/CAM-MK3/cam-together.png",
+          "image": "./assets/projects/CAM-MK3/cam-together-visual.png",
           "containImage": false,
           "color": 1,
           "description": "A PCBA that controls two Runcam Split 4s, commanded via I2C by MIDAS (flight controller), implements a video decoder, runs hardware video compression, and transfers live video at 1Mb/s using GFSK.",
           "link": {
-            "href": "./project-pages-ee/project-template-images.html",
+            "href": "./project-pages-ee/cam-mk3.html",
             "text": "Read More",
             "external": false
           }

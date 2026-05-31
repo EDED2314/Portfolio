@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/images/serious.png" />
+    <title>Eddie Tang - CAM-MK3</title>
+    <meta name="description"
+        content="CAM-MK3: A live video system for rocket avionics with digital video compression and transmission">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/project-common.css">
+    <link rel="stylesheet" href="../css/project-narrative.css">
+    <link rel="stylesheet" href="../css/skills.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
+
+    <script defer src="../js/script.js"></script>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="page-content">
+        <div class="what-is-above-the-projects">
+            <span class="main-title-big">CAM-MK3</span>
+            <div class="project-brief-other-info">
+                <div class="project-brief-role">Hardware & Firmware Engineer</div>
+                <div class="project-brief-duration">2024 - 2025</div>
+            </div>
+            <div class="project-skills" data-project="CAM-MK3"></div>
+            <hr class="section-divider" />
+        </div>
+
+        <div id="project-details">
+            <div class="project-rows-container">
+
+                <!-- Introduction Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">As part of the sensor suit that goes in the avionics bay of our
+                                rockets, I designed, assembled, and brought up the third major revision of our live
+                                video system boards.</div>
+
+                            <div class="body-text">Before I joined, the team implemented a 1.2 GHz analog video system
+                                that communicated with an external transmitter and receiver. It supported two Runcam
+                                Split 4s, allowed for seamless switching between the two, but posed many challenges.
+                            </div>
+
+                            <div class="body-text">One of the major issues that came with this board was its
+                                interference with the GPS on the AV bay, since both of them used the 1.2 GHz band for
+                                their communication. This issue was seen in their 2025 summer launch at FAR, where the
+                                GPS lost lock for a duration of time, and CAM had to be manually turned off via commands
+                                sent from the ground station; only then did the GPS lock come back.</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div id="project-image">
+                            <div class="project-image-content">
+                                <div class="project-image-container">
+                                    <img src="../assets/projects/CAM-MK3/cam-together-visual.png" class="project-image"
+                                        alt="CAM-MK3 Board Visualization">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Approach Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">To improve on last year's design, we looked at choosing our own
+                                transceivers and implementing our own packet design and protocols. Hence, my design for
+                                this year was to implement a pipeline to convert NTSC (analog video from the Runcams) to
+                                digital video, then compress that digital video data and send it via a digital
+                                transceiver.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div id="project-image">
+                            <div class="project-image-content">
+                                <div class="project-image-container">
+                                    <img src="../assets/projects/CAM-MK3/CAM-MK3-Hardware diagram.png"
+                                        class="project-image" alt="CAM-MK3 Hardware Diagram">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schematic Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">Feel free to take a look at our schematics for the first revision of
+                                this board here, or by viewing the photos to the side.</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div class="image-gallery" data-gallery>
+                            <img class="gallery-main" src="../assets/projects/CAM-MK3/page-1-schematic.png"
+                                alt="CAM-MK3 Schematic Page 1">
+                            <div class="gallery-thumbs">
+                                <img src="../assets/projects/CAM-MK3/page-1-schematic.png" alt="Schematic Page 1">
+                                <img src="../assets/projects/CAM-MK3/page-2-schematic.png" alt="Schematic Page 2">
+                                <img src="../assets/projects/CAM-MK3/CAM-MK3-front-kicad-preview.png"
+                                    alt="Front KiCad Preview">
+                                <img src="../assets/projects/CAM-MK3/CAM-MK3-back-kicad-preview.png"
+                                    alt="Back KiCad Preview">
+                                <img src="../assets/projects/CAM-MK3/CAM-FRONT-3d visual.png" alt="3D Front View">
+                                <img src="../assets/projects/CAM-MK3/CAM-BACK-3d visual.png" alt="3D Back View">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Component Selection Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">For our transceiver, we initially chose a Si4463 module by NiceRF, as
+                                the SI4463 supported 1Mbps FSK, a reasonable speed for transmitting video.</div>
+
+                            <div class="body-text">Due to issues with writing successful drivers for the Si4463 to
+                                transmit at 1Mbps and amplifier problems on EAGLE (our receiver board), we later
+                                switched to the LR2021 in a second revision. Amazingly, it supported FLRC at 2.6 Mbps as
+                                well as FSK at 1 Mbps at 434 MHz frequencies, and FSK at 2 Mbps for frequencies around
+                                915 MHz, as well as many more features such as ranging.</div>
+
+                            <div class="body-text">For our MCU, we used the ESP32-P4, a fairly new chip from Espressif
+                                that supported hardware and software JPEG, H.264, and YUV42X compression. This chip also
+                                supports a native digital video port (DVP) interface, allowing DMA and fast copying of
+                                digital video from our ADC to memory.</div>
+
+                            <div class="body-text">For the conversion from analog video to digital video, we chose the
+                                TVP5151. It converts NTSC video (analog) into YUV422 video (digital). Despite seeming
+                                pretty straightforward, the implementation was a bit more complicated. The TVP5151's
+                                wiring required 8 data channels, along with an external 27 MHz clock for video
+                                synchronization. This chip has cost the team and I much headache as soldering it takes
+                                great patience and detail (it took us a good 35-50 resolders to get all of them working
+                                through all the revisions we made throughout the year).</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div id="project-image">
+                            <div class="project-image-content">
+                                <div class="project-image-container">
+                                    <img src="../assets/projects/CAM-MK3/pcb.png" class="project-image"
+                                        alt="CAM-MK3 PCB Layout">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Design Details Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">For this design, I also employed the same camera power toggle chip
+                                that was used on the last major revision of the board. Additionally, we added two I2C
+                                lines, one for internal board communication with chips, and one for board-to-board
+                                communication between MIDAS (our in-house flight computer) and CAM.</div>
+
+                            <div class="body-text">Lastly, for debugging, there are the standard LEDs and the buzzer, as
+                                well as USB-C.</div>
+
+                            <div class="body-text">Overall, there are 1.8V, 3.3V, and 5.5V power rails throughout the
+                                board, requiring three buck converters, greatly increasing wiring and component
+                                complexity.</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div id="project-image">
+                            <div class="project-image-content">
+                                <div class="project-image-container">
+                                    <img src="../assets/projects/CAM-MK3/OLD CAM front and back visual.png"
+                                        class="project-image" alt="Old CAM Design Comparison">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assembly Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">Over the course of the year, we assembled and brought up four (or
+                                five?) CAMs, spanning across three minor revisions. I don't think this one sentence does
+                                justice to the amount of time it actually took 😂.</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div class="image-gallery" data-gallery>
+                            <img class="gallery-main" src="../assets/projects/CAM-MK3/assembly-wide-shot.JPG"
+                                alt="Assembly Wide Shot">
+                            <div class="gallery-thumbs">
+                                <img src="../assets/projects/CAM-MK3/assembly-wide-shot.JPG" alt="Assembly Wide Shot">
+                                <img src="../assets/projects/CAM-MK3/assembly-solder-paste.JPG"
+                                    alt="Solder Paste Application">
+                                <img src="../assets/projects/CAM-MK3/assembly-solder-paste-ready-board-2.JPG"
+                                    alt="Board Ready for Reflow">
+                                <img src="../assets/projects/CAM-MK3/assembly-with-heat-gun-pointing-to-cam.JPG"
+                                    alt="Heat Gun Reflow">
+                                <img src="../assets/projects/CAM-MK3/assembly-another-heat-gun-photo.JPG"
+                                    alt="Reflow Process">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finished Assembly Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">The finished physical assembly showcases the complexity and precision
+                                required for this project. Each component was carefully placed and soldered to ensure
+                                reliable operation in the harsh conditions of rocket flight.</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div class="image-gallery" data-gallery>
+                            <img class="gallery-main"
+                                src="../assets/projects/CAM-MK3/finished-physical-assembly-front-on-table.JPG"
+                                alt="Finished Assembly Front">
+                            <div class="gallery-thumbs">
+                                <img src="../assets/projects/CAM-MK3/finished-physical-assembly-front-on-table.JPG"
+                                    alt="Front on Table">
+                                <img src="../assets/projects/CAM-MK3/finished-physical-assembly-back-on-table.jpg"
+                                    alt="Back on Table">
+                                <img src="../assets/projects/CAM-MK3/finished-physical-assembly-front-inhand.JPG"
+                                    alt="Front in Hand">
+                                <img src="../assets/projects/CAM-MK3/finished-physical-assembly-back-inhand.JPG"
+                                    alt="Back in Hand">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Firmware Development Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">For the CAM firmware, I wrote drivers for the TVP5151, DVP interface,
+                                hardware encoder, and for testing LR2021 FLRC and FSK.</div>
+
+                            <div class="body-text">For the DVP interface, we had to modify and use internal files from
+                                the existing esp_video library provided by Espressif due to our "video device" being an
+                                ADC instead of an actual camera. Also, due to difficulties in integrating the H264
+                                hardware encoder successfully, we opted for a less powerful JPEG encoding.</div>
+
+                            <div class="body-text">For the LR2021, we settled for FSK due to having difficulties getting
+                                FLRC to work. From our benchmarks, we achieved a transmission rate of around 877 Mbps by
+                                using the 255-byte Tx FIFO on the chip.</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div class="image-gallery" data-gallery>
+                            <img class="gallery-main" src="../assets/projects/CAM-MK3/CAM benchmark terminal output.png"
+                                alt="Benchmark Results">
+                            <div class="gallery-thumbs">
+                                <img src="../assets/projects/CAM-MK3/CAM benchmark terminal output.png"
+                                    alt="Terminal Benchmark Output">
+                                <img src="../assets/projects/CAM-MK3/coding-directory-tree-screenshot.png"
+                                    alt="Code Directory Structure">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Protocol Implementation Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">To transmit image buffers that are much longer than the 255-byte
+                                packet size supported by FSK, I implemented fragmentation algorithms and packet headers
+                                to transmit and reconstruct images via multiple sends.</div>
+
+                            <div class="body-text">Furthermore, we implemented a Reed-Solomon correction scheme to
+                                recover corrupted data during transmission.</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div id="project-image">
+                            <div class="project-image-content">
+                                <div class="project-image-container">
+                                    <img src="../assets/projects/CAM-MK3/testing-on-table.JPG" class="project-image"
+                                        alt="Testing Setup">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Integration and Testing Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">The CAM board was integrated into the avionics bay alongside other
+                                critical systems. Extensive testing was performed to ensure reliable operation during
+                                flight conditions.</div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div class="image-gallery" data-gallery>
+                            <img class="gallery-main" src="../assets/projects/CAM-MK3/AV-bay-on-table.JPG"
+                                alt="AV Bay Integration">
+                            <div class="gallery-thumbs">
+                                <img src="../assets/projects/CAM-MK3/AV-bay-on-table.JPG" alt="AV Bay on Table">
+                                <img src="../assets/projects/CAM-MK3/AV-bay-on-ground.JPG" alt="AV Bay on Ground">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flight Results Section -->
+                <div class="project-row">
+                    <div class="project-row-left">
+                        <div class="project-details-content">
+                            <div class="body-text">The system successfully captured and transmitted video during flight
+                                tests. Below are examples of the video output from EAGLE (our receiver board),
+                                demonstrating the effectiveness of our compression and transmission pipeline.</div>
+
+                            <div class="body-text">Check out our boards: <a href="https://github.com/ISSUIUC/ISS-PCB"
+                                    target="_blank" rel="noopener noreferrer">https://github.com/ISSUIUC/ISS-PCB</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-row-right">
+                        <div class="image-gallery" data-gallery>
+                            <img class="gallery-main" src="../assets/projects/CAM-MK3/eagle_output_ex1.png"
+                                alt="EAGLE Output Example 1">
+                            <div class="gallery-thumbs">
+                                <img src="../assets/projects/CAM-MK3/eagle_output_ex1.png" alt="Output Example 1">
+                                <img src="../assets/projects/CAM-MK3/eagle_output_ex2.png" alt="Output Example 2">
+                                <img src="../assets/projects/CAM-MK3/eagle_output_ex3.png" alt="Output Example 3">
+                                <img src="../assets/projects/CAM-MK3/eagle_output_ex4.png" alt="Output Example 4">
+                                <img src="../assets/projects/CAM-MK3/eagle_output_ex5.png" alt="Output Example 5">
+                                <img src="../assets/projects/CAM-MK3/eagle_output_flight_1.JPG" alt="Flight Output">
+                                <img src="../assets/projects/CAM-MK3/contact_sheet.JPG" alt="Contact Sheet">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="footer-placeholder"></div>
+
+</body>
+
+</html>
