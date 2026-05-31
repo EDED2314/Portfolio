@@ -9,7 +9,7 @@
           "image": "./assets/projects/CAM-MK3/cam-together.png",
           "containImage": false,
           "color": 1,
-          "description": "A PCB that controls two Runcam Split 4s, uses B2B I2C, implements a video decoder, runs hardware video compression, and transfers live video at 1Mb/s using FSK.",
+          "description": "A PCB that controls two Runcam Split 4s, commanded via I2C by MIDAS (flight controller), implements a video decoder, runs hardware video compression, and transfers live video at 1Mb/s using GFSK.",
           "link": {
             "href": "./project-pages-ee/project-template-images.html",
             "text": "Read More",
@@ -22,22 +22,9 @@
           "image": "./assets/projects/EAGLE/eagle-together.png",
           "containImage": false,
           "color": 2,
-          "description": "Receiver board that runs video decompression and processing on received video fragments from CAM FSK payloads. Designed with essentially the same hardware as CAM.",
+          "description": "Receiver board that runs video decompression and processing on received video fragments from CAM GFSK payloads. Designed with essentially the same hardware as CAM.",
           "link": {
             "href": "./project-pages-ee/project-template-images.html",
-            "text": "Read More",
-            "external": false
-          }
-        },
-        {
-          "key": "GATOR",
-          "title": "GATOR",
-          "image": "./assets/projects/GATOR/gator-together.png",
-          "containImage": false,
-          "color": 3,
-          "description": "A high voltage power distribution and ground station PCB. It's equipt with a GPS, a LoRa transciever, two stepper motor drivers, and components that come with them.",
-          "link": {
-            "href": "./project-pages-ee/project-template-narrative.html",
             "text": "Read More",
             "external": false
           }
@@ -48,7 +35,20 @@
           "image": "./assets/projects/EMBER/IMG_5734.JPG",
           "containImage": false,
           "color": 4,
-          "description": "As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCB, and FSM + BLE packet design.",
+          "description": "As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCB, and software FSM + BLE payload packet design.",
+          "link": {
+            "href": "./project-pages-ee/project-template-narrative.html",
+            "text": "Read More",
+            "external": false
+          }
+        },
+        {
+          "key": "GATOR",
+          "title": "GATOR",
+          "image": "./assets/projects/GATOR/gator-together.png",
+          "containImage": false,
+          "color": 3,
+          "description": "A 24V power distribution and ground station PCB. It's equipt with a GPS module, a LoRa transciever, two stepper motor drivers, buck converters, and an ESP32-S3 mini. Its purpose is to control a yagi antenna's orientation based off GPS telemtry from MIDAS during flight.",
           "link": {
             "href": "./project-pages-ee/project-template-narrative.html",
             "text": "Read More",
