@@ -49,7 +49,6 @@ a.button#home-button {
 }
 
 /* Footer Styling */
-
 #footer {
   position: fixed;
   bottom: 20px;
@@ -61,8 +60,8 @@ a.button#home-button {
   gap: 16px;
   z-index: 999;
   background: rgba(255, 255, 255, 0.1);
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border-radius: 9999px;
   backdrop-filter: blur(4px);
 }
 
@@ -77,12 +76,12 @@ a.no-underline:hover {
   cursor: pointer;
 }
 
-/* Small devices (portrait tablets and large phones, 800px and below) */
+/* Small devices */
 @media only screen and (max-width: 800px) {
   #footer {
     bottom: 15px;
     right: 15px;
-    padding: 10px;
+    padding: 8px 12px;
     gap: 12px;
   }
 
@@ -91,6 +90,7 @@ a.no-underline:hover {
     height: 18px;
   }
 }
+
 
 /* --- Image Gallery Module --- */
 
@@ -133,4 +133,39 @@ a.no-underline:hover {
 
 .gallery-thumbs img.active-thumb {
   outline: 3px solid var(--COLOR-1, #007bff);
+}
+
+
+/* Footer email button (clipboard copy) */
+.footer-email-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Toast notification — position is set dynamically in footer.js */
+#footer-toast {
+  position: fixed;
+  background: rgba(20, 20, 20, 0.85);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: translateX(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+#footer-toast.footer-toast-visible {
+  opacity: 1;
+  transform: translateX(0);
 }
