@@ -22,12 +22,7 @@
           "image": "./assets/projects/EAGLE/eagle-front-back-together-visual.png",
           "containImage": false,
           "color": 2,
-          "description": "Part of ISS Spaceshot. Receiver board that runs video processing and display on received video fragments from CAM GFSK payloads. Designed with essentially the same hardware as CAM.",
-          "link": {
-            "href": "./project-pages-ee/project-template-images.html",
-            "text": "Read More",
-            "external": false
-          }
+          "description": "Part of ISS Spaceshot. Receiver board that runs video processing and display on received video fragments from CAM GFSK payloads. Designed with essentially the same hardware as CAM."
         },
         {
           "key": "EMBER",
@@ -35,12 +30,7 @@
           "image": "./assets/projects/EMBER/IMG_5734.JPG",
           "containImage": false,
           "color": 4,
-          "description": "Part of Illini Solar Car. As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCBA, and software FSM + BLE payload packet design.",
-          "link": {
-            "href": "./project-pages-ee/project-template-narrative.html",
-            "text": "Read More",
-            "external": false
-          }
+          "description": "Part of Illini Solar Car. As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCBA, and software FSM + BLE payload packet design."
         },
         {
           "key": "GATOR",
@@ -48,12 +38,7 @@
           "image": "./assets/projects/GATOR/gator-together.png",
           "containImage": false,
           "color": 3,
-          "description": "Part of ISS Spaceshot. A 24V power distribution and ground station PCB. It's equipt with a GPS module, a LoRa transciever, two stepper motor drivers, buck converters, and an ESP32-S3 mini. Its purpose is to control a yagi antenna's orientation based off GPS telemtry from MIDAS during flight.",
-          "link": {
-            "href": "./project-pages-ee/project-template-narrative.html",
-            "text": "Read More",
-            "external": false
-          }
+          "description": "Part of ISS Spaceshot. A 24V power distribution and ground station PCB. It's equipt with a GPS module, a LoRa transciever, two stepper motor drivers, buck converters, and an ESP32-S3 mini. Its purpose is to control a yagi antenna's orientation based off GPS telemtry from MIDAS during flight."
         },
         {
           "key": "Coilgun",
@@ -79,12 +64,7 @@
           "image": "./assets/projects/Genibook/logo.png",
           "containImage": true,
           "color": 6,
-          "description": "An unofficial gradebook app built for my high-school district's gradebook system - Genesis. Underneath this one project is an entire line of smaller projects, evolving from a simple script, that eventually turned into Genibook.",
-          "link": {
-            "href": "./project-pages-ee/project-template-narrative.html",
-            "text": "Read More",
-            "external": false
-          }
+          "description": "An unofficial gradebook app built for my high-school district's gradebook system - Genesis. Underneath this one project is an entire line of smaller projects, evolving from a simple webscrapping script, that eventually turned into Genibook. [Developed before ChatGPT]"
         },
         {
           "key": "Spaceshot-GNC",
@@ -92,12 +72,7 @@
           "image": "./assets/projects/GNC/preview.png",
           "containImage": false,
           "color": 1,
-          "description": "An on-going project. I implemented sensor fusion algorithms for ISS's Spaceshot Rocket's Guidance Navigation and Controls team in C++; I also created post-flight data visualization and processing tools in Python for our SILSIM.",
-          "link": {
-            "href": "./project-pages-ee/project-template-narrative.html",
-            "text": "Read More",
-            "external": false
-          }
+          "description": "An on-going project. I implemented sensor fusion algorithms for ISS's Spaceshot Rocket's Guidance Navigation and Controls team in C++; I also created post-flight data visualization and processing tools in Python for our SILSIM."
         },
         {
           "key": "FireJams",
