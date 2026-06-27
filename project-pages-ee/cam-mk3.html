@@ -62,7 +62,7 @@
                             <div class="stat-label">Hours</div>
                         </div>
                         <div class="stat-card" style="background-color: var(--COLOR-5);">
-                            <div class="stat-number">3</div>
+                            <div class="stat-number">4</div>
                             <div class="stat-label">Times Flown</div>
                         </div>
                         <div class="stat-card" style="background-color: var(--COLOR-2);">
@@ -332,6 +332,12 @@
                             ADC instead of an actual camera. Also, due to difficulties in integrating the H264
                             hardware encoder successfully, we opted for a less powerful JPEG encoding.</div>
 
+                        <div class="body-text">Before JPEG encoding, I implemented stride length correction along with
+                            byte offset detection and correction in software. This is because the received image data
+                            has an actual stride length of 722 bytes instead of the intended 720 bytes, and sometimes it
+                            came with a byte offset that caused inverted colorspaces (purple & green) images after
+                            conversion from YUV422 to JPEG.</div>
+
                         <div class="body-text">For the LR2021, we settled for FSK due to having difficulties getting
                             FLRC to work. From our benchmarks, we achieved a transmission rate of around 877 Mbps by
                             using the 255-byte Tx FIFO on the chip.</div>
@@ -386,6 +392,11 @@
                             flight conditions. Below you can see integration videos showing the system in action. (Most
                             recent tests with the LR2021 system yielded ~8fps)
                         </div>
+                        <div class="body-text">Nearby I have attached three videos that showcase our CAM & EAGLE
+                            ecosystem. The first two videos are with using the LR2021 transcievers, while the third
+                            video is using the SI4463. The first video is our most recent quality and speed, with the
+                            second video being filmed right after the first successful test (without byte-offset
+                            correction), and the third being filmed during integration night-before-flight.</div>
                     </div>
                 </div>
             </div>
@@ -394,12 +405,15 @@
                 <div class="project-row-left">
                     <div class="image-gallery" data-gallery>
                         <video class="gallery-main-video" controls>
-                            <source src="../assets/projects/CAM-MK3/Cam-test-success-fast.mov" type="video/mp4">
+                            <source src="../assets/projects/CAM-MK3/Cam-test-june-2026.mov" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <img class="gallery-main" src="../assets/projects/CAM-MK3/AV-bay-on-table.JPG"
                             alt="AV Bay Integration" style="display: none;">
                         <div class="gallery-thumbs">
+                            <video muted>
+                                <source src="../assets/projects/CAM-MK3/Cam-test-june-2026.mov" type="video/mp4">
+                            </video>
                             <video muted>
                                 <source src="../assets/projects/CAM-MK3/Cam-test-success-fast.MOV" type="video/mp4">
                             </video>
@@ -427,8 +441,13 @@
                             (It looked better its just I don't have footage of that yet)
                         </div>
 
-                        <div class="body-text">Check out our boards: <a href="https://github.com/ISSUIUC/ISS-PCB"
-                                target="_blank" rel="noopener noreferrer">https://github.com/ISSUIUC/ISS-PCB</a>
+                        <div class="body-text">Check out our KiCAD designs: <a href="https://github.com/ISSUIUC/ISS-PCB"
+                                target="_blank"
+                                rel="noopener noreferrer">https://github.com/ISSUIUC/ISS-PCB/tree/main/boards/CAM-MK3</a>.
+                            Also
+                            check out the software used by CAM & EAGLE: <a
+                                href="https://github.com/ISSUIUC/CAM-Software" target="_blank"
+                                rel="noopener noreferrer">https://github.com/ISSUIUC/CAM-Software</a>
                         </div>
                     </div>
                 </div>
