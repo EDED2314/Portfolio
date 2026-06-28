@@ -16,7 +16,12 @@
   <link rel="stylesheet" href="../css/typography.css">
   <link rel="stylesheet" href="../css/utilities.css">
   <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/tldr-section.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.7/d3.layout.cloud.min.js"></script>
+  <script defer src="../js/words-ember.js"></script>
+  <script defer src="../js/wordcloud-d3.js"></script>
   <script defer src="../js/script.js"></script>
 </head>
 
@@ -47,43 +52,39 @@
     <hr class="section-divider" style="margin-top: 10px;" />
 
     <div id="project-details">
+      <!-- Word Cloud Section -->
+      <div class="tldr-section" style="margin-bottom: 40px;">
+          <div class="tldr-content">
+              <div class="word-cloud-wrapper" style="width: 100%; border: none;">
+                  <div id="word-cloud-svg" class="word-cloud"></div>
+                  <button id="regenerate-cloud" class="regenerate-btn" title="Regenerate word cloud">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              d="M13.65 2.35C12.2 0.9 10.21 0 8 0 3.58 0 0.01 3.58 0.01 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L9 7h7V0l-2.35 2.35z"
+                              fill="currentColor" />
+                      </svg>
+                  </button>
+              </div>
+          </div>
+      </div>
+
       <div class="section-subheader-text">Project Overview</div>
       <div class="project-details-content">
-        <div class="body-text">Project EMBER (Embedded Micro-power Bluetooth Energy Research) is a joint Illini Solar
-          Car × AbbVie research project to design an ultra-low-power TPMS prototype as a vehicle for studying the
-          implementation and usage of low-power protocols and operating modes that have not been fully explored. The
-          project proposes two deliverables: a functional TPMS prototype (wheel-mounted transmitter + receiver) and a
-          technical research report with lessons learned, engineering decisions, and recommendations transferable to
-          AbbVie's medical device platform.</div>
+        <div class="body-text">Project EMBER (Embedded Micro-power Bluetooth Energy Research) is a joint research project between Illini Solar Car and AbbVie. We decided to design an ultra low power TPMS prototype to study low power protocols and operating modes that haven't been fully explored yet. In the end, we delivered a functional TPMS prototype with a wheel mounted transmitter and receiver, plus a technical report detailing our lessons learned and engineering choices that AbbVie could apply to their medical devices.</div>
 
-        <div class="body-text">The main reason for choosing a TPMS system to study low-power design is that it best
-          aligns with both AbbVie's requirements for what to research and what Solar Car would benefit from — in this
-          case, real-time pressure data for vehicle dynamics. However, this poses an interesting challenge: the chassis
-          itself is made from carbon fiber, which essentially acts as an RF shield, significantly reducing the amount of
-          data we can receive if we place the receiver node near the typical telemetry board.</div>
+        <div class="body-text">We picked a TPMS system because it perfectly aligned with what AbbVie wanted to research and what Solar Car actually needed (real time pressure data for vehicle dynamics). It was definitely a fun challenge since the carbon fiber chassis basically acts like an RF shield, which makes it super hard to get data if the receiver is placed near the normal telemetry board.</div>
 
-        <div class="body-text">For this PCB, we selected a <b>discrete TPMS design</b> instead of using a SoC TPMS
-          sensor. Discrete designs involve using more than one IC to perform the required functionalities (measure
-          pressure, auto wake, and send data), offering more customization and research potential — which is this
-          project's primary deliverable. Our key components include the <b>EFR32BG22</b> MCU with integrated BLE, the
-          <b>MS5837</b> high-pressure barometer, and the <b>ADXL362</b> ultra-low-power accelerometer for
-          motion-triggered wake.
-        </div>
+        <div class="body-text">For the board itself, we went with a <b>discrete TPMS design</b> instead of a standard SoC TPMS sensor. By using multiple ICs to measure pressure, handle auto wake, and send data, we got way more room for customization and research. Our main components were the <b>EFR32BG22</b> MCU with BLE, a <b>MS5837</b> high pressure barometer, and an <b>ADXL362</b> ultra low power accelerometer to wake the system on motion.</div>
 
-        <div class="body-text">The firmware implements a 4-state FSM: <b>Init</b> (POR/EM4 wakeup in ~1.83ms),
-          <b>Activity</b> (cycling between EM0 polling and EM2 sleep at ~42µA), <b>Transition</b> (saving state to
-          BURAM before deep sleep), and <b>Inactivity</b> (EM4 at only 420nA). With a CR1632 coin cell, the system can
-          theoretically run for <b>5.4 years</b> in typical use — or 283 days of continuous operation.
-        </div>
+        <div class="body-text">On the firmware side, I wrote a 4 state FSM. It handles initialization, an active polling state, a transition state to save data before deep sleep, and an inactive deep sleep mode drawing just 420nA. Powered by a simple CR1632 coin cell, the math says this thing can theoretically run for <b>5.4 years</b> under typical use.</div>
 
-        <div class="body-text">The BLE payload is a compact 10-byte advertisement packet transmitted on three channels,
-          encoding node address, pressure (raw_kpa / 3.44), temperature (temp_c + 50), warning flags, battery voltage,
-          sequence counter, and a hardware-accelerated CRC8 — all inspired by the protocol reverse-engineered from a
-          commercial TPMS system.</div>
+        <div class="body-text">For sending data, the BLE payload is just a tiny 10 byte packet sent over three channels. It packs in the node address, pressure, temperature, warning flags, battery voltage, sequence counter, and a CRC8 checksum. We actually got a lot of inspiration for this from reverse engineering a commercial TPMS system!</div>
       </div>
     </div>
 
     <!-- IMAGE GALLERY -->
+    <div class="section-subheader-text" style="margin-top: 40px; margin-bottom: 20px;">Image Gallary</div>
     <div id="project-gallery">
 
       <div class="project-gallery-content">

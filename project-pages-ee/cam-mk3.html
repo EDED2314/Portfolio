@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/project-common.css">
+    <link rel="stylesheet" href="../css/project-images.css">
     <link rel="stylesheet" href="../css/project-narrative.css">
     <link rel="stylesheet" href="../css/skills.css">
     <link rel="stylesheet" href="../css/typography.css">
@@ -20,6 +21,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.7/d3.layout.cloud.min.js"></script>
+    <script defer src="../js/words-cam-mk3.js"></script>
     <script defer src="../js/wordcloud-d3.js"></script>
     <script defer src="../js/script.js"></script>
 </head>
@@ -28,16 +30,20 @@
     <div id="navbar-placeholder"></div>
 
     <div class="page-content">
-        <div class="project-header-row" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; width: 100%;">
+        <div class="project-header-row"
+            style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; width: 100%;">
             <div class="what-is-above-the-projects">
                 <span class="main-title-big">CAM-MK3</span>
                 <div class="project-brief-other-info">
                     <div class="project-brief-role">Hardware & Firmware Engineer</div>
                     <div class="project-brief-duration">2025 - 2026</div>
                     <div class="project-header-buttons">
-                        <a href="https://github.com/ISSUIUC/ISS-PCB/tree/main/boards/CAM-MK3" target="_blank" class="project-header-button">💻 KiCAD PCB Repo</a>
-                        <a href="https://github.com/ISSUIUC/CAM-Software" target="_blank" class="project-header-button">💾 Firmware Repo</a>
-                        <a href="../assets/projects/CAM-MK3/CAM-MK3-schematic.pdf" target="_blank" class="project-header-button">📄 Open Schematic PDF</a>
+                        <a href="https://github.com/ISSUIUC/ISS-PCB/tree/main/boards/CAM-MK3" target="_blank"
+                            class="project-header-button">💻 KiCAD PCB Repo</a>
+                        <a href="https://github.com/ISSUIUC/CAM-Software" target="_blank"
+                            class="project-header-button">💾 Firmware Repo</a>
+                        <a href="../assets/projects/CAM-MK3/CAM-MK3-schematic.pdf" target="_blank"
+                            class="project-header-button">📄 Open Schematic PDF</a>
                     </div>
                 </div>
                 <div class="project-skills" data-project="CAM-MK3"></div>
@@ -152,13 +158,10 @@
             <!-- Design Approach Section -->
             <div class="project-row">
                 <div class="project-row-left">
-                    <div id="project-image">
-                        <div class="project-image-content">
-                            <div class="project-image-container">
-                                <img src="../assets/projects/CAM-MK3/CAM-MK3-Hardware diagram.png" class="project-image"
-                                    alt="CAM-MK3 Hardware Diagram">
-                            </div>
-                        </div>
+                    <div class="gallery-image-container full-width">
+                        <img src="../assets/projects/CAM-MK3/CAM-MK3-Hardware diagram.png" class="gallery-image"
+                            alt="CAM-MK3 Hardware Diagram" style="object-fit: contain; height: 400px">
+                        <span class="image-caption"><b>Hardware Architecture Diagram</b></span>
                     </div>
                 </div>
             </div>
@@ -221,13 +224,10 @@
                 </div>
 
                 <div class="project-row-right">
-                    <div id="project-image">
-                        <div class="project-image-content">
-                            <div class="project-image-container">
-                                <img src="../assets/projects/CAM-MK3/pcb.png" class="project-image"
-                                    alt="CAM-MK3 PCB Layout">
-                            </div>
-                        </div>
+                    <div class="gallery-image-container full-width">
+                        <img src="../assets/projects/CAM-MK3/pcb.png" class="gallery-image" alt="CAM-MK3 PCB Layout"
+                            style="object-fit: contain;">
+                        <span class="image-caption"><b>CAM-MK3 PCB Layout</b></span>
                     </div>
                 </div>
             </div>
@@ -251,13 +251,10 @@
                 </div>
 
                 <div class="project-row-right">
-                    <div id="project-image">
-                        <div class="project-image-content">
-                            <div class="project-image-container">
-                                <img src="../assets/projects/CAM-MK3/OLD CAM front and back visual.png"
-                                    class="project-image" alt="Old CAM Design Comparison">
-                            </div>
-                        </div>
+                    <div class="gallery-image-container full-width">
+                        <img src="../assets/projects/CAM-MK3/OLD CAM front and back visual.png" class="gallery-image"
+                            alt="Old CAM Design Comparison" style="object-fit: contain;">
+                        <span class="image-caption"><b>Old CAM Design Comparison</b></span>
                     </div>
                 </div>
             </div>
@@ -377,13 +374,10 @@
                 </div>
 
                 <div class="project-row-right">
-                    <div id="project-image">
-                        <div class="project-image-content">
-                            <div class="project-image-container">
-                                <img src="../assets/projects/CAM-MK3/testing-on-table.JPG" class="project-image"
-                                    alt="Testing Setup">
-                            </div>
-                        </div>
+                    <div class="gallery-image-container full-width">
+                        <img src="../assets/projects/CAM-MK3/testing-on-table.JPG" class="gallery-image"
+                            alt="Testing Setup" style="object-fit: contain;">
+                        <span class="image-caption"><b>Testing Setup</b></span>
                     </div>
                 </div>
             </div>
