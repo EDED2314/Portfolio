@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="../assets/images/newprofilepic-modified.png" />
+  <title>Eddie Tang - Project EMBER</title>
+  <meta name="description"
+    content="Project EMBER: An ultra-low-power TPMS prototype for Illini Solar Car, featuring a 17mm-diameter PCBA with BLE communication and custom FSM design.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/project-common.css">
+  <link rel="stylesheet" href="../css/project-images.css">
+  <link rel="stylesheet" href="../css/skills.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+
+  <script defer src="../js/script.js"></script>
+</head>
+
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <div class="page-content">
+    <div class="what-is-above-the-projects"
+      style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+      <div>
+        <span class="main-title-big">Project EMBER</span>
+        <div class="project-brief-other-info">
+          <div class="project-brief-role">Technical Lead: Hardware & some Firmware</div>
+          <div class="project-brief-duration">February 2026 - May 2026</div>
+          <div style="margin-top: 10px; display: flex; gap: 12px; font-family: sans-serif;">
+            <a href="https://github.com/IlliniSolarCar/PCB/tree/SensorsProject/Telemetry/AbbViexISC_Sensors_Project/SensorBoard_v1.0"
+              target="_blank"
+              style="font-size: 14px; font-weight: bold; color: #1a1a1a; text-decoration: none; border: 2px solid #1a1a1a; padding: 6px 12px; border-radius: 20px; background: #fff; box-shadow: 2px 2px 0px #1a1a1a; transition: all 0.2s;">💻
+              View on GitHub</a>
+            <a href="../assets/projects/EMBER/schematic.pdf" target="_blank"
+              style="font-size: 14px; font-weight: bold; color: #1a1a1a; text-decoration: none; border: 2px solid #1a1a1a; padding: 6px 12px; border-radius: 20px; background: #fff; box-shadow: 2px 2px 0px #1a1a1a; transition: all 0.2s;">📄
+              Open Schematic PDF</a>
+          </div>
+        </div>
+      </div>
+      <img src="../assets/projects/EMBER/IlliniSolarCarLogo.png" alt="Illini Solar Car Logo"
+        style="height: 70px; object-fit: contain; border: 2.5px solid #1a1a1a; border-radius: 8px; padding: 6px; background: #fff; box-shadow: 3px 3px 0px #1a1a1a;">
+    </div>
+    <div style="width: 100%; margin-top: -10px;">
+      <div class="project-skills" data-project="EMBER"></div>
+    </div>
+    <hr class="section-divider" style="margin-top: 10px;" />
+
+    <div id="project-details">
+      <div class="section-subheader-text">Project Overview</div>
+      <div class="project-details-content">
+        <div class="body-text">Project EMBER (Embedded Micro-power Bluetooth Energy Research) is a joint Illini Solar
+          Car × AbbVie research project to design an ultra-low-power TPMS prototype as a vehicle for studying the
+          implementation and usage of low-power protocols and operating modes that have not been fully explored. The
+          project proposes two deliverables: a functional TPMS prototype (wheel-mounted transmitter + receiver) and a
+          technical research report with lessons learned, engineering decisions, and recommendations transferable to
+          AbbVie's medical device platform.</div>
+
+        <div class="body-text">The main reason for choosing a TPMS system to study low-power design is that it best
+          aligns with both AbbVie's requirements for what to research and what Solar Car would benefit from — in this
+          case, real-time pressure data for vehicle dynamics. However, this poses an interesting challenge: the chassis
+          itself is made from carbon fiber, which essentially acts as an RF shield, significantly reducing the amount of
+          data we can receive if we place the receiver node near the typical telemetry board.</div>
+
+        <div class="body-text">For this PCB, we selected a <b>discrete TPMS design</b> instead of using a SoC TPMS
+          sensor. Discrete designs involve using more than one IC to perform the required functionalities (measure
+          pressure, auto wake, and send data), offering more customization and research potential — which is this
+          project's primary deliverable. Our key components include the <b>EFR32BG22</b> MCU with integrated BLE, the
+          <b>MS5837</b> high-pressure barometer, and the <b>ADXL362</b> ultra-low-power accelerometer for
+          motion-triggered wake.
+        </div>
+
+        <div class="body-text">The firmware implements a 4-state FSM: <b>Init</b> (POR/EM4 wakeup in ~1.83ms),
+          <b>Activity</b> (cycling between EM0 polling and EM2 sleep at ~42µA), <b>Transition</b> (saving state to
+          BURAM before deep sleep), and <b>Inactivity</b> (EM4 at only 420nA). With a CR1632 coin cell, the system can
+          theoretically run for <b>5.4 years</b> in typical use — or 283 days of continuous operation.
+        </div>
+
+        <div class="body-text">The BLE payload is a compact 10-byte advertisement packet transmitted on three channels,
+          encoding node address, pressure (raw_kpa / 3.44), temperature (temp_c + 50), warning flags, battery voltage,
+          sequence counter, and a hardware-accelerated CRC8 — all inspired by the protocol reverse-engineered from a
+          commercial TPMS system.</div>
+      </div>
+    </div>
+
+    <!-- IMAGE GALLERY -->
+    <div id="project-gallery">
+
+      <div class="project-gallery-content">
+
+        <!-- Row 1: The Context & Concept -->
+        <div class="gallery-image-container two-thirds">
+          <img src="../assets/projects/EMBER/KiCad_PCB_editor_screenshot_front.png" class="gallery-image"
+            alt="KiCad PCB Editor front layout design preview" style="object-fit: contain; background: #202020;">
+          <span class="image-caption"><b>01 / KiCad Layout:</b> The front layout of the 17mm-diameter TPMS PCBA designed
+            in KiCad.</span>
+        </div>
+
+        <div class="gallery-image-container one-third">
+          <img src="../assets/projects/EMBER/image_of_finger_and_0201_componennt_on_it_size_comparison.JPG"
+            class="gallery-image" alt="0201 component on a fingertip for size comparison">
+          <span class="image-caption"><b>02 / The Scale:</b> A tiny 0201 component on a fingertip.</span>
+        </div>
+
+        <!-- Row 1.5: Car Wheel Placement -->
+        <div class="gallery-image-container full-width">
+          <img src="../assets/projects/EMBER/wheel.png" class="gallery-image"
+            alt="CAD preview of Project D showing TPMS sensor placement on wheels"
+            style="height: 220px; object-fit: contain;">
+          <span class="image-caption"><b>03 / Placement:</b> CAD preview showing where the sensor and receiver sit on
+            the Solar Car.</span>
+        </div>
+
+        <!-- Row 2: Reverse Engineering Phase -->
+        <div class="gallery-image-container half-width">
+          <img src="../assets/projects/EMBER/reverse_engineering_commerical_tpms_receiver.JPG" class="gallery-image"
+            alt="Reverse engineering a commercial TPMS USB receiver">
+          <span class="image-caption"><b>03 / Reverse Engineering:</b> Decoding the USB receiver protocol.</span>
+        </div>
+
+        <div class="gallery-image-container half-width">
+          <img src="../assets/projects/EMBER/out_of_python_script_that_successfully_reverse_engineered_tpms.JPG"
+            class="gallery-image" alt="Python script output showing decoded TPMS data">
+          <span class="image-caption"><b>04 / Signal Decoded:</b> Python script successfully reading pressure from a
+            test tire.</span>
+        </div>
+
+        <!-- Row 3: Dimension Analysis -->
+        <div class="gallery-image-container one-third">
+          <img src="../assets/projects/EMBER/getting_dimensions_of_comemrical_pcb_1.JPG" class="gallery-image"
+            alt="Measuring dimensions of a commercial TPMS PCB">
+          <span class="image-caption"><b>05 / Measurement:</b> Dimension mapping.</span>
+        </div>
+        <div class="gallery-image-container one-third">
+          <img src="../assets/projects/EMBER/getting_dimensions_of_comemrical_pcb_2.JPG" class="gallery-image"
+            alt="Close-up dimension measurements of commercial TPMS">
+          <span class="image-caption"><b>06 / More measurments:</b> More dimension mapping. Used KiCAD 3D model export
+            feature to print out 1:1 3D model on paper to verify drill hole locations.</span>
+        </div>
+        <div class="gallery-image-container one-third">
+          <img src="../assets/projects/EMBER/zoom_in_photo_of_pcb_with_components_placed_on_it_birds_eye_view.jpg"
+            class="gallery-image" alt="Bird's-eye view of EMBER PCB with components placed">
+          <span class="image-caption"><b>07 / Placement:</b> Components placed on EMBER.</span>
+        </div>
+
+        <!-- Row 4: Workspace & Debugging -->
+        <div class="gallery-image-container two-thirds">
+          <img src="../assets/projects/EMBER/wideangleshot_portrait_of_bringup_workspace.JPG" class="gallery-image"
+            alt="Wide-angle shot of the hardware bringup workspace">
+          <span class="image-caption"><b>08 / Bringup Station:</b> Where the magic (and debugging) happens.</span>
+        </div>
+        <div class="gallery-image-container one-third">
+          <img src="../assets/projects/EMBER/SWD_image_unfortunately_looks_kinda_bad.JPG" class="gallery-image"
+            alt="SWD probe connected for firmware development">
+          <span class="image-caption"><b>09 / SWD Probe:</b> Connecting the J-Link debugger.</span>
+        </div>
+
+        <!-- Row 5: Debugging Wires -->
+        <div class="gallery-image-container half-width">
+          <img src="../assets/projects/EMBER/SWD_wires_everywhere_debugging_image.JPG" class="gallery-image"
+            alt="SWD debugging with wires connected to tiny debug pads">
+          <span class="image-caption"><b>10 / Debug Wires:</b> Dealing with fragile pads.</span>
+        </div>
+        <div class="gallery-image-container half-width">
+          <img
+            src="../assets/projects/EMBER/one_swd_cable_connected_by_connecting_probe_clipper_to_soldered_test_pad_hooks.JPG"
+            class="gallery-image" alt="Probe clipper attached to soldered test pad hooks">
+          <span class="image-caption"><b>11 / Probe Clipper:</b> Switch to 30 AWG wire and grabber mounts.</span>
+        </div>
+
+        <!-- Row 6: Finished Assembly & Scale -->
+        <div class="gallery-image-container one-third">
+          <img src="../assets/projects/EMBER/Image_of_pcb_again_ontop_of_wood_surface.JPG" class="gallery-image"
+            alt="Finished EMBER PCBA on wood surface">
+          <span class="image-caption"><b>12 / Board:</b> Completed 17mm PCBA.</span>
+        </div>
+        <div class="gallery-image-container one-third">
+          <img
+            src="../assets/projects/EMBER/Image_of_pcb_again_ontop_of_wood_surface_with_finger_next_to_it_size_comparison.JPG"
+            class="gallery-image" alt="EMBER PCB next to a finger for size comparison">
+          <span class="image-caption"><b>13 / Scale:</b> PCBA next to finger.</span>
+        </div>
+        <div class="gallery-image-container one-third">
+          <img src="../assets/projects/EMBER/size_comparison_with_coin.JPG" class="gallery-image"
+            alt="EMBER PCB size comparison with a coin">
+          <span class="image-caption"><b>14 / Comparison:</b> Sized against a coin.</span>
+        </div>
+
+        <!-- Row 7: Palm shot & Thickness -->
+        <div class="gallery-image-container half-width">
+          <img src="../assets/projects/EMBER/our_own_tpms_sensor_17mm_diameter_on_palm_of_hand_image_comparison.JPG"
+            class="gallery-image" alt="17mm TPMS sensor on the palm of a hand">
+          <span class="image-caption"><b>15 / In Hand:</b> Ready to fit inside the valve assembly.</span>
+        </div>
+        <div class="gallery-image-container half-width">
+          <img src="../assets/projects/EMBER/comparison_of_pcb_thicknesses_commerical_vs_ours.JPG" class="gallery-image"
+            alt="PCB thickness comparison between commercial and EMBER">
+          <span class="image-caption"><b>16 / Profile:</b> Commercial vs. EMBER thickness.</span>
+        </div>
+
+        <!-- Row 8: Casing & Side-by-Side -->
+        <div class="gallery-image-container one-third">
+          <img
+            src="../assets/projects/EMBER/45_deg_angle_to_subject_image_where_subject_is_our_tpms_pcb_commerical_tpms_pcb_anontop_of_white_surface_with_some_mounting_brakcet_for_coincell.JPG"
+            class="gallery-image" alt="EMBER and commercial TPMS PCBs side by side with coin cell bracket">
+          <span class="image-caption"><b>17 / Setup:</b> Coin cell bracket details.</span>
+        </div>
+        <div class="gallery-image-container one-third">
+          <img
+            src="../assets/projects/EMBER/45_deg_angle_to_subject_image_where_subject_is_our_tpms_pcb_commerical_tpms_pcb_anontop_of_white_surface_with_some_mounting_brakcet_for_coincell_with_screwdriver_intheback.JPG"
+            class="gallery-image" alt="Another angle of EMBER vs commercial TPMS with screwdriver for scale">
+          <span class="image-caption"><b>18 / Scale:</b> Screwdriver reference.</span>
+        </div>
+        <div class="gallery-image-container one-third">
+          <img
+            src="../assets/projects/EMBER/top_down_view_portrait_of_our_tpms_sensor_pcb_in_casing_and_commerical_to_the_side_with_screw_driver_near_bottom.JPG"
+            class="gallery-image" alt="EMBER PCB in its casing alongside commercial TPMS">
+          <span class="image-caption"><b>19 / Cased:</b> Seated in the custom casing.</span>
+        </div>
+
+        <!-- Row 9: Final Assembly -->
+        <div class="gallery-image-container full-width">
+          <img src="../assets/projects/EMBER/birds_eye_view_shot_of_casing_2_without_screwdriver.JPG"
+            class="gallery-image" alt="Bird's-eye view of EMBER casing assembly">
+          <span class="image-caption"><b>20 / Final Assembly:</b> Ready for solar car integration and track
+            testing.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+
+</body>
+
+</html>

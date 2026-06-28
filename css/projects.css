@@ -219,6 +219,15 @@
     margin: 0;
 }
 
+/* Button container for multiple action buttons on card back */
+.project-card-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+}
+
 /* Read-more button styling on card back */
 .project-card-back a.button.read-more {
     background-color: #fff;

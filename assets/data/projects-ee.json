@@ -27,10 +27,22 @@
         {
           "key": "EMBER",
           "title": "Project EMBER",
-          "image": "./assets/projects/EMBER/IMG_5734.JPG",
+          "image": "./assets/projects/EMBER/45_deg_angle_to_subject_image_where_subject_is_our_tpms_pcb_commerical_tpms_pcb_anontop_of_white_surface_with_some_mounting_brakcet_for_coincell_with_screwdriver_intheback.JPG",
           "containImage": false,
           "color": 4,
-          "description": "Part of Illini Solar Car. As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCBA, and software FSM + BLE payload packet design."
+          "description": "Part of Illini Solar Car. As Technical Lead for EMBER (Embedded Micro-power Bluetooth Energy Research), I spearheaded schematic and layout design for a 17mm-diameter TPMS PCBA, and software FSM + BLE payload packet design.",
+          "links": [
+            {
+              "href": "./project-pages-ee/ember.html",
+              "text": "View Project",
+              "external": false
+            },
+            {
+              "href": "./assets/projects/EMBER/Technical Report Spring Semester 2026.pdf",
+              "text": "Technical Report",
+              "external": true
+            }
+          ]
         },
         {
           "key": "GATOR",

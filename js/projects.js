@@ -108,23 +108,37 @@
                 back.appendChild(desc);
                 back.appendChild(skills);
 
-                if (project.link) {
-                    const btn = document.createElement('a');
-                    btn.className = 'button read-more';
-                    btn.href = project.link.href;
-                    if (project.link.external) btn.target = '_blank';
+                // Build link buttons — supports `links` (array) or legacy `link` (single)
+                const linkItems = project.links
+                    ? project.links
+                    : project.link
+                        ? [project.link]
+                        : [];
 
-                    const btnText = document.createElement('span');
-                    btnText.className = 'button-text';
-                    btnText.textContent = project.link.text || 'Read More';
+                if (linkItems.length > 0) {
+                    const btnContainer = document.createElement('div');
+                    btnContainer.className = 'project-card-buttons';
 
-                    const arrowIcon = document.createElement('img');
-                    arrowIcon.src = './assets/icons/arrow-right.svg';
-                    arrowIcon.className = 'right-arrow-icon';
+                    linkItems.forEach(linkData => {
+                        const btn = document.createElement('a');
+                        btn.className = 'button read-more';
+                        btn.href = linkData.href;
+                        if (linkData.external) btn.target = '_blank';
 
-                    btn.appendChild(btnText);
-                    btn.appendChild(arrowIcon);
-                    back.appendChild(btn);
+                        const btnText = document.createElement('span');
+                        btnText.className = 'button-text';
+                        btnText.textContent = linkData.text || 'Read More';
+
+                        const arrowIcon = document.createElement('img');
+                        arrowIcon.src = './assets/icons/arrow-right.svg';
+                        arrowIcon.className = 'right-arrow-icon';
+
+                        btn.appendChild(btnText);
+                        btn.appendChild(arrowIcon);
+                        btnContainer.appendChild(btn);
+                    });
+
+                    back.appendChild(btnContainer);
                 }
 
                 inner.appendChild(front);
@@ -132,7 +146,7 @@
                 card.appendChild(inner);
 
                 card.addEventListener('click', (e) => {
-                    if (e.target.closest('a.button.read-more')) return;
+                    if (e.target.closest('a.button.read-more') || e.target.closest('.project-card-buttons')) return;
                     const isFlipping = !card.classList.contains('flipped');
                     card.classList.toggle('flipped');
                     adjustCardHeight(card, isFlipping);
