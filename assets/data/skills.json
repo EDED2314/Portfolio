@@ -32,6 +32,15 @@
     }
   ],
   "projects": {
+    "PNNL-Bat-Tag": [
+      "RF",
+      "Altium Designer",
+      "FSK Modulation",
+      "Embedded Hardware",
+      "Hardware Bring Up",
+      "C/C++",
+      "Test & Measurement"
+    ],
     "EMBER": [
       "KiCAD",
       "C++",
@@ -151,6 +160,16 @@
     ]
   },
   "experiences": {
+    "PNNL": [
+      "RF",
+      "FSK Modulation",
+      "Altium Designer",
+      "PCB Design",
+      "Embedded Firmware",
+      "C/C++",
+      "Test & Measurement",
+      "Hardware Bring Up"
+    ],
     "Rowan-University": [
       "Molecular Dynamics Simulations",
       "LAMMPS",

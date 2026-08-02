@@ -4,6 +4,31 @@
       "title": "Projects",
       "projects": [
         {
+          "key": "PNNL-Bat-Tag",
+          "title": "Bat Tag Transmitter",
+          "image": "./assets/experiences/pnnl/fig2.png",
+          "containImage": false,
+          "color": 6,
+          "description": "My SULI project at Pacific Northwest National Laboratory. I designed, fabricated, and tested miniature programmable-oscillator-based FSK transmitter prototypes for 3D wildlife tracking of bats, comparing two circuit designs on signal quality, size, and power draw. One reached a preliminary 342 m test distance with existing receivers.",
+          "links": [
+            {
+              "href": "./assets/experiences/pnnl/Manuscript.pdf",
+              "text": "Manuscript",
+              "external": true
+            },
+            {
+              "href": "./assets/experiences/pnnl/Poster.pdf",
+              "text": "Poster",
+              "external": true
+            },
+            {
+              "href": "./assets/experiences/pnnl/Supplementary Material.pdf",
+              "text": "Supplementary Materials",
+              "external": true
+            }
+          ]
+        },
+        {
           "key": "CAM-MK3",
           "title": "CAM",
           "image": "./assets/projects/CAM-MK3/cam-together-visual.png",
