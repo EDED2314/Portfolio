@@ -1,7 +1,7 @@
 .venv
 *.DS_Store
 *.env
-Portfolio.pptx
-Portfolio_generated.pptx
+*Portfolio.pptx
+*Portfolio_generated.pptx
 scripts/
 coverletters/

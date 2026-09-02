@@ -75,7 +75,7 @@
           "image": "./assets/projects/GATOR/gator-together.png",
           "containImage": false,
           "color": 3,
-          "description": "Part of ISS Spaceshot. A 24V power distribution and ground station PCB. It's equipt with a GPS module, a LoRa transciever, two stepper motor drivers, buck converters, and an ESP32-S3 mini. Its purpose is to control a yagi antenna's orientation based off GPS telemtry from MIDAS during flight."
+          "description": "Part of ISS Spaceshot. A 12V power distribution and ground station PCB. It's equipt with a GPS module, a LoRa transciever, two stepper motor drivers, buck converters, and an ESP32-S3 mini. Its purpose is to control a yagi antenna's orientation based off GPS telemtry from MIDAS during flight."
         },
         {
           "key": "Coilgun",
